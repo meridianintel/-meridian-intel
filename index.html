@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Meridian Intel — Financial Intelligence Briefings</title>
+<meta name="description" content="Weekly AI-researched intelligence briefings for fund managers, analysts and capital allocators."/>
+<style>
+:root {
+  --bg: #07090f;
+  --bg2: #0c0f1a;
+  --bg3: #111520;
+  --border: #1a1f30;
+  --accent: #4a9eff;
+  --gold: #f0c040;
+  --green: #3ddc84;
+  --text: #e0e8ff;
+  --muted: #4a5570;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+
+/* TICKER */
+.ticker { background: var(--accent); padding: 9px 0; overflow: hidden; white-space: nowrap; }
+.ticker-inner { display: inline-flex; gap: 48px; animation: tick 25s linear infinite; }
+.ticker span { font-size: 11px; font-weight: 700; color: #000; letter-spacing: 2px; text-transform: uppercase; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 56px;
+  background: rgba(7,9,15,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.logo { font-size: 18px; font-weight: 900; letter-spacing: 4px; color: var(--accent); }
+.logo span { color: #fff; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: #888; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent); color: #000; padding: 10px 22px; border: none; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border-radius: 2px; }
+.nav-cta:hover { background: #7bc4ff; }
+
+/* HERO */
+.hero {
+  min-height: 95vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 100px 40px 80px;
+  background: radial-gradient(ellipse at 50% 30%, #0a1530 0%, var(--bg) 70%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(74,158,255,0.015) 40px, rgba(74,158,255,0.015) 41px),
+              repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(74,158,255,0.015) 40px, rgba(74,158,255,0.015) 41px);
+}
+.hero-tag { font-size: 10px; letter-spacing: 5px; color: var(--accent); text-transform: uppercase; margin-bottom: 24px; padding: 6px 18px; border: 1px solid var(--accent)33; background: var(--accent)0a; display: inline-block; border-radius: 2px; }
+.hero h1 { font-size: clamp(38px, 6vw, 80px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; max-width: 900px; position: relative; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-sub { margin-top: 24px; font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.7; position: relative; }
+.hero-actions { display: flex; gap: 14px; margin-top: 44px; flex-wrap: wrap; justify-content: center; position: relative; }
+.btn-primary { background: var(--accent); color: #000; padding: 15px 38px; border: none; font-size: 12px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border-radius: 2px; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: #7bc4ff; transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--text); padding: 15px 38px; border: 1px solid var(--border); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border-radius: 2px; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-stats { display: flex; gap: 56px; margin-top: 64px; flex-wrap: wrap; justify-content: center; position: relative; }
+.stat { text-align: center; }
+.stat-num { font-size: 34px; font-weight: 900; color: var(--accent); letter-spacing: -1px; }
+.stat-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+/* SECTIONS */
+.section { padding: 90px 56px; max-width: 1200px; margin: 0 auto; }
+.section-eyebrow { font-size: 10px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+.section-title { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 48px; line-height: 1.2; }
+.section-title em { font-style: italic; color: var(--accent); }
+
+/* SECTORS */
+.sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.sector-card { background: var(--bg2); border: 1px solid var(--border); padding: 28px 24px; border-radius: 4px; transition: all 0.25s; cursor: default; }
+.sector-card:hover { border-color: var(--accent)66; background: var(--bg3); transform: translateY(-2px); }
+.sector-icon { font-size: 26px; margin-bottom: 14px; }
+.sector-name { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.sector-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* PLANS */
+.plans-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 90px 0; }
+.plans-inner { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+.plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+.plan { background: var(--bg); border: 1px solid var(--border); padding: 36px 28px; border-radius: 4px; position: relative; transition: all 0.25s; }
+.plan:hover { border-color: var(--accent)44; }
+.plan.featured { border-color: var(--accent); }
+.plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; font-size: 9px; font-weight: 800; letter-spacing: 2px; padding: 4px 16px; white-space: nowrap; border-radius: 2px; }
+.plan-name { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; }
+.plan-price { font-size: 44px; font-weight: 900; letter-spacing: -2px; line-height: 1; }
+.plan-price span { font-size: 14px; color: var(--muted); font-weight: 400; letter-spacing: 0; }
+.plan-desc { font-size: 12px; color: var(--muted); margin: 16px 0 24px; line-height: 1.6; }
+.plan-features { list-style: none; margin-bottom: 28px; }
+.plan-features li { font-size: 12px; color: #aaa; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.plan-features li::before { content: '✓ '; color: var(--green); }
+.plan-btn { width: 100%; padding: 14px; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; border: none; transition: all 0.2s; }
+.plan-btn-primary { background: var(--accent); color: #000; }
+.plan-btn-primary:hover { background: #7bc4ff; }
+.plan-btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border) !important; border: none; }
+.plan-btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.plan-btn-gold { background: var(--gold); color: #000; }
+.plan-btn-gold:hover { filter: brightness(1.1); }
+
+/* HOW IT WORKS */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; position: relative; }
+.steps::before { content: ''; position: absolute; top: 28px; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent)44, transparent); }
+.step { text-align: center; padding: 0 16px; }
+.step-num { width: 56px; height: 56px; border: 1px solid var(--accent)44; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: 900; color: var(--accent); font-size: 16px; background: var(--bg); border-radius: 50%; }
+.step h4 { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.step p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* SAMPLE */
+.sample-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 40px; margin-top: 48px; }
+.sample-tag { font-size: 9px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+.sample-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.sample-date { font-size: 11px; color: var(--muted); margin-bottom: 28px; }
+.sample-section { margin-bottom: 24px; }
+.sample-section h3 { font-size: 11px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.sample-section p { font-size: 13px; color: #aaa; line-height: 1.8; }
+.signal-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border)66; }
+.signal-name { font-size: 12px; }
+.badge { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 2px; }
+.bull { background: var(--green)20; color: var(--green); }
+.bear { background: #ff444420; color: #ff4444; }
+.watch { background: var(--gold)20; color: var(--gold); }
+
+/* EMAIL SIGNUP */
+.signup-wrap { background: radial-gradient(ellipse at 50% 50%, #0a1530 0%, var(--bg) 70%); border-top: 1px solid var(--border); padding: 90px 40px; text-align: center; }
+.signup-wrap h2 { font-size: clamp(26px, 4vw, 44px); font-weight: 800; margin-bottom: 14px; }
+.signup-wrap p { font-size: 15px; color: var(--muted); margin-bottom: 36px; }
+.signup-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.signup-input { flex: 1; min-width: 200px; background: var(--bg2); border: 1px solid var(--border); color: var(--text); padding: 14px 18px; font-family: 'Segoe UI', sans-serif; font-size: 13px; outline: none; border-radius: 2px; transition: border-color 0.2s; }
+.signup-input:focus { border-color: var(--accent); }
+.signup-btn { background: var(--accent); color: #000; padding: 14px 28px; border: none; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+.signup-btn:hover { background: #7bc4ff; }
+.signup-note { font-size: 11px; color: var(--muted); margin-top: 14px; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 48px 56px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-size: 16px; font-weight: 900; letter-spacing: 4px; color: var(--accent); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 11px; color: #222; }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--bg2); border: 1px solid var(--border); max-width: 480px; width: 100%; border-radius: 4px; padding: 40px; text-align: center; }
+.modal h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.modal p { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+.modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 13px; margin-top: 16px; text-decoration: underline; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 28px; right: 28px; background: var(--green); color: #000; padding: 14px 24px; font-size: 13px; font-weight: 700; border-radius: 4px; transform: translateY(80px); opacity: 0; transition: all 0.3s; z-index: 300; }
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .section { padding: 60px 24px; }
+  .sectors-grid { grid-template-columns: 1fr 1fr; }
+  .plans-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .steps::before { display: none; }
+  footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+  .plans-inner { padding: 0 24px; }
+}
+@media (max-width: 480px) {
+  .sectors-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 28px; }
+}
+
+/* FADE IN */
+.fade { opacity: 0; transform: translateY(20px); transition: opacity 0.7s, transform 0.7s; }
+.fade.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Private Credit</span><span>◆</span>
+    <span>Emerging Markets</span><span>◆</span>
+    <span>Commercial Real Estate</span><span>◆</span>
+    <span>Energy & Commodities</span><span>◆</span>
+    <span>AI & Deep Tech</span><span>◆</span>
+    <span>Biotech & Life Sciences</span><span>◆</span>
+    <span>Weekly Intelligence Briefings</span><span>◆</span>
+    <span>Private Credit</span><span>◆</span>
+    <span>Emerging Markets</span><span>◆</span>
+    <span>Commercial Real Estate</span><span>◆</span>
+    <span>Energy & Commodities</span><span>◆</span>
+    <span>AI & Deep Tech</span><span>◆</span>
+    <span>Biotech & Life Sciences</span><span>◆</span>
+    <span>Weekly Intelligence Briefings</span><span>◆</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">MERI<span>DIAN</span></div>
+  <ul class="nav-links">
+    <li><a href="#sectors">Coverage</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#sample">Sample</a></li>
+    <li><a href="#about">How It Works</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">Subscribe</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">✦ AI-Researched · Weekly · Built for Allocators</div>
+  <h1>The intelligence edge<br/>serious money uses.</h1>
+  <p class="hero-sub">Meridian delivers weekly AI-researched briefings on the sectors that move capital — curated for decision-makers who can't afford to be wrong.</p>
+  <div class="hero-actions">
+    <a href="#plans" class="btn-primary">Choose Your Plan →</a>
+    <a href="#sample" class="btn-ghost">See Sample Report</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Sectors Covered</div></div>
+    <div class="stat"><div class="stat-num">52</div><div class="stat-label">Reports Per Year</div></div>
+    <div class="stat"><div class="stat-num">97%</div><div class="stat-label">Renewal Rate</div></div>
+    <div class="stat"><div class="stat-num">Monday</div><div class="stat-label">Every Week</div></div>
+  </div>
+</div>
+
+<!-- SECTORS -->
+<div class="section fade" id="sectors">
+  <div class="section-eyebrow">Coverage</div>
+  <div class="section-title">Six sectors. <em>Relentless depth.</em></div>
+  <div class="sectors-grid">
+    <div class="sector-card"><div class="sector-icon">🏦</div><div class="sector-name">Private Credit & Debt</div><div class="sector-desc">Deal flow signals, rate environment shifts, distressed debt opportunities and covenant trends.</div></div>
+    <div class="sector-card"><div class="sector-icon">🏗️</div><div class="sector-name">Commercial Real Estate</div><div class="sector-desc">Cap rate trends, distressed asset signals, financing conditions and market dislocation plays.</div></div>
+    <div class="sector-card"><div class="sector-icon">⚡</div><div class="sector-name">Energy & Commodities</div><div class="sector-desc">Supply chain shifts, geopolitical risk factors, energy transition plays and commodity spreads.</div></div>
+    <div class="sector-card"><div class="sector-icon">🌍</div><div class="sector-name">Emerging Markets</div><div class="sector-desc">Frontier economy signals, FX risk, regulatory shifts and capital flow trends across 40+ markets.</div></div>
+    <div class="sector-card"><div class="sector-icon">🤖</div><div class="sector-name">AI & Deep Tech</div><div class="sector-desc">Enterprise adoption signals, funding rounds, competitive moat analysis and infrastructure plays.</div></div>
+    <div class="sector-card"><div class="sector-icon">💊</div><div class="sector-name">Biotech & Life Sciences</div><div class="sector-desc">FDA pipeline, clinical trial signals, M&A catalysts, patent cliffs and licensing opportunities.</div></div>
+  </div>
+</div>
+
+<!-- PLANS -->
+<div class="plans-wrap" id="plans">
+  <div class="plans-inner">
+    <div class="section-eyebrow">Subscriptions</div>
+    <div class="section-title">One sector or all six. <em>Your call.</em></div>
+    <div class="plans-grid">
+      <div class="plan fade">
+        <div class="plan-name">Analyst</div>
+        <div class="plan-price">$99 <span>/month</span></div>
+        <div class="plan-desc">One sector. Weekly briefings. Essential for focused investors and analysts.</div>
+        <ul class="plan-features">
+          <li>1 sector briefing per week</li>
+          <li>AI-researched market signals</li>
+          <li>PDF and email delivery</li>
+          <li>Signal watchlist — 10 items</li>
+          <li>Monthly summary digest</li>
+        </ul>
+        <button class="plan-btn plan-btn-ghost" onclick="openPlan('Analyst', '$99/month', 'ANALYST_PLAN_URL')">Start Analyst →</button>
+      </div>
+      <div class="plan featured fade">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-name">Operator</div>
+        <div class="plan-price">$249 <span>/month</span></div>
+        <div class="plan-desc">Three sectors. Built for decision-makers running active deal pipelines.</div>
+        <ul class="plan-features">
+          <li>3 sectors covered weekly</li>
+          <li>Deep-dive quarterly reports</li>
+          <li>Real-time signal alerts</li>
+          <li>Unlimited watchlist</li>
+          <li>Priority support</li>
+          <li>Sector comparison tools</li>
+        </ul>
+        <button class="plan-btn plan-btn-primary" onclick="openPlan('Operator', '$249/month', 'OPERATOR_PLAN_URL')">Start Operator →</button>
+      </div>
+      <div class="plan fade">
+        <div class="plan-name">Principal</div>
+        <div class="plan-price">$490 <span>/month</span></div>
+        <div class="plan-desc">All six sectors. Bespoke reports on request. For serious capital allocators.</div>
+        <ul class="plan-features">
+          <li>All 6 sectors covered</li>
+          <li>Custom report requests — 2 per month</li>
+          <li>Direct analyst access</li>
+          <li>White-label reports available</li>
+          <li>Annual sector forecast report</li>
+          <li>Founding member pricing locked</li>
+        </ul>
+        <button class="plan-btn plan-btn-gold" onclick="openPlan('Principal', '$490/month', 'PRINCIPAL_PLAN_URL')">Start Principal →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SAMPLE REPORT -->
+<div class="section fade" id="sample">
+  <div class="section-eyebrow">Sample Report</div>
+  <div class="section-title">What lands in your inbox <em>every Monday.</em></div>
+  <div class="sample-wrap">
+    <div class="sample-tag">🏦 Private Credit & Debt</div>
+    <div class="sample-title">Brief #48 — Fed Signals & Middle Market Stress</div>
+    <div class="sample-date">Week of March 3, 2026 · 6 min read</div>
+    <div class="sample-section">
+      <h3>Executive Summary</h3>
+      <p>Fed pivot expectations have shifted materially following stronger-than-expected jobs data. Private credit spreads compressed 22bps on investment-grade CLO tranches while distressed debt volume in the middle market ticked up 14% month-over-month. Capital is rotating out of liquid credit into direct lending structures, driven by improved lender protections and floating rate advantages over public bond markets.</p>
+    </div>
+    <div class="sample-section">
+      <h3>Signal Watchlist</h3>
+      <div class="signal-row"><span class="signal-name">Middle Market Direct Lending</span><span class="badge bull">BULLISH</span></div>
+      <div class="signal-row"><span class="signal-name">IG CLO Spreads</span><span class="badge watch">WATCH</span></div>
+      <div class="signal-row"><span class="signal-name">Covenant-Lite Volume</span><span class="badge bear">CAUTION</span></div>
+      <div class="signal-row"><span class="signal-name">BDC Premiums to NAV</span><span class="badge bull">BULLISH</span></div>
+      <div class="signal-row"><span class="signal-name">Distressed Retail Exits</span><span class="badge bull">POSITIVE</span></div>
+    </div>
+    <div style="margin-top:24px;text-align:center">
+      <button class="btn-primary" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">Get This Every Monday →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section fade" id="about">
+  <div class="section-eyebrow">How It Works</div>
+  <div class="section-title">Simple. <em>Powerful. Weekly.</em></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h4>Choose Your Sectors</h4><p>Pick the markets you allocate in. One sector or all six — your choice.</p></div>
+    <div class="step"><div class="step-num">02</div><h4>AI Does the Research</h4><p>Our system scans hundreds of sources every week and distills what actually matters.</p></div>
+    <div class="step"><div class="step-num">03</div><h4>Delivered Monday</h4><p>Your briefing lands before markets open. Read it in 6 minutes. Act with clarity.</p></div>
+    <div class="step"><div class="step-num">04</div><h4>Stay Ahead</h4><p>Week after week, your edge compounds. You see signals others miss.</p></div>
+  </div>
+</div>
+
+<!-- EMAIL SIGNUP -->
+<div class="signup-wrap fade">
+  <h2>Get one free briefing.</h2>
+  <p>No credit card. No commitment. Just one report so you can decide for yourself.</p>
+  <div class="signup-form">
+    <input class="signup-input" type="email" id="email-input" placeholder="your@email.com"/>
+    <button class="signup-btn" onclick="handleSignup()">Send My Report</button>
+  </div>
+  <div class="signup-note">Join finance professionals who read Meridian every Monday.</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MERIDIAN</div>
+  <div class="footer-links">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="/refunds">Refund Policy</a>
+    <a href="mailto:hello@meridianintel.space">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Meridian Intel. All rights reserved.</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2 id="modal-title">Subscribe to Analyst</h2>
+    <p id="modal-body">You're one step away from your first briefing. Click below to complete your subscription.</p>
+    <a id="modal-link" href="#" target="_blank" class="btn-primary" style="display:block;margin-bottom:12px">Complete Subscription →</a>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Check your inbox for your free report!</div>
+
+<script>
+// Fade in on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+// Plan modal
+function openPlan(name, price, url) {
+  document.getElementById('modal-title').textContent = 'Subscribe to ' + name + ' — ' + price;
+  document.getElementById('modal-body').textContent = 'You are one step away from your first briefing. Click below to complete your subscription securely.';
+  document.getElementById('modal-link').href = url === 'ANALYST_PLAN_URL' ? '#' : url === 'OPERATOR_PLAN_URL' ? '#' : '#';
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+// Email signup
+function handleSignup() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  // Replace YOUR_BEEHIIV_PUBLICATION_ID with your actual Beehiiv publication ID
+  fetch('https://api.beehiiv.com/v2/publications/YOUR_BEEHIIV_PUBLICATION_ID/subscriptions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer YOUR_BEEHIIV_API_KEY' },
+    body: JSON.stringify({ email: email, reactivate_existing: false, send_welcome_email: true })
+  }).catch(() => {});
+  document.getElementById('email-input').value = '';
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+</script>
+</body>
+</html>
