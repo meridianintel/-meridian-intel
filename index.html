@@ -396,13 +396,7 @@ function closeModal() { document.getElementById('modal').classList.remove('open'
 function handleSignup() {
   const email = document.getElementById('email-input').value.trim();
   if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-  // Replace pub_cb4233ba-a08e-42b6-8da8-c21e457e70d3 with your actual Beehiiv publication ID
-  fetch('https://api.beehiiv.com/v2/publications/pub_cb4233ba-a08e-42b6-8da8-c21e457e70d3/subscriptions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer o4AtqL6EjRjk7msLxN8vLI50C5O1rLwZp4YdOkXCEYUgrDFP5FkjZEVyme57egeq' },
-    body: JSON.stringify({ email: email, reactivate_existing: false, send_welcome_email: true })
-  }).catch(() => {});
-  document.getElementById('email-input').value = '';
+  window.open('https://meridian-intel.beehiiv.com/subscribe?email=' + encodeURIComponent(email), '_blank');
   const toast = document.getElementById('toast');
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 4000);
