@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Legal — Meridian Intel</title>
+<style>
+:root {
+  --bg: #07090f;
+  --bg2: #0c0f1a;
+  --border: #1a1f30;
+  --accent: #4a9eff;
+  --text: #e0e8ff;
+  --muted: #4a5570;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; }
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 56px; border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.logo { font-size: 18px; font-weight: 900; letter-spacing: 4px; color: var(--accent); }
+.logo span { color: #fff; }
+.nav-back { color: #888; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--accent); }
+
+.tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); background: var(--bg2); }
+.tab { padding: 16px 28px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: #666; transition: all 0.2s; font-family: 'Segoe UI', sans-serif; border-bottom: 2px solid transparent; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.page { display: none; max-width: 800px; margin: 0 auto; padding: 60px 40px; }
+.page.active { display: block; }
+.page h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.page .updated { font-size: 12px; color: var(--muted); margin-bottom: 40px; }
+.page h2 { font-size: 16px; font-weight: 700; color: var(--accent); margin: 32px 0 12px; text-transform: uppercase; letter-spacing: 2px; font-size: 11px; }
+.page p { font-size: 14px; color: #aaa; line-height: 1.8; margin-bottom: 12px; }
+.page ul { list-style: none; margin-bottom: 12px; }
+.page ul li { font-size: 14px; color: #aaa; padding: 5px 0; line-height: 1.7; }
+.page ul li::before { content: '→ '; color: var(--accent); }
+.divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+footer { border-top: 1px solid var(--border); padding: 32px 56px; text-align: center; }
+footer a { font-size: 12px; color: var(--muted); text-decoration: none; margin: 0 12px; }
+footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">MERI<span>DIAN</span></div>
+  <a href="/" class="nav-back">← Back to Site</a>
+</nav>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('terms', this)">Terms of Service</button>
+  <button class="tab" onclick="show('privacy', this)">Privacy Policy</button>
+  <button class="tab" onclick="show('refunds', this)">Refund Policy</button>
+</div>
+
+<!-- TERMS -->
+<div class="page active" id="page-terms">
+  <h1>Terms of Service</h1>
+  <div class="updated">Last updated: March 2026</div>
+
+  <h2>1. Acceptance of Terms</h2>
+  <p>By subscribing to or accessing Meridian Intel ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.</p>
+
+  <h2>2. Description of Service</h2>
+  <p>Meridian Intel provides weekly AI-researched financial intelligence briefings delivered via email. Subscribers receive sector-specific market signals, watchlists, and analysis covering Private Credit, Commercial Real Estate, Emerging Markets, Energy, AI & Deep Tech, and Biotech & Life Sciences.</p>
+
+  <h2>3. Subscriptions</h2>
+  <p>Meridian Intel offers monthly subscription plans. By subscribing, you authorize us to charge your payment method on a recurring monthly basis. Subscriptions automatically renew unless cancelled before the renewal date.</p>
+  <ul>
+    <li>Analyst Plan — $99/month — 1 sector briefing per week</li>
+    <li>Operator Plan — $249/month — 3 sector briefings per week</li>
+    <li>Principal Plan — $490/month — All 6 sector briefings per week</li>
+  </ul>
+
+  <h2>4. Not Financial Advice</h2>
+  <p>All content provided by Meridian Intel is for informational and educational purposes only. Nothing in our briefings constitutes financial, investment, legal, or tax advice. You should consult a qualified financial advisor before making any investment decisions. Meridian Intel is not responsible for any financial losses incurred as a result of acting on information provided in our briefings.</p>
+
+  <h2>5. Intellectual Property</h2>
+  <p>All content published by Meridian Intel, including briefings, reports, watchlists and analyses, is the exclusive intellectual property of Meridian Intel. Subscribers may not reproduce, distribute, or sell any content without prior written permission.</p>
+
+  <h2>6. Cancellation</h2>
+  <p>You may cancel your subscription at any time. Cancellation takes effect at the end of the current billing period. You will continue to receive briefings until the end of your paid period.</p>
+
+  <h2>7. Limitation of Liability</h2>
+  <p>Meridian Intel shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Service. Our total liability shall not exceed the amount paid by you in the preceding 30 days.</p>
+
+  <h2>8. Changes to Terms</h2>
+  <p>We reserve the right to modify these Terms at any time. We will notify subscribers of material changes via email. Continued use of the Service following notification constitutes acceptance of the updated Terms.</p>
+
+  <h2>9. Contact</h2>
+  <p>For questions regarding these Terms, contact us at: hello@meridianintel.space</p>
+</div>
+
+<!-- PRIVACY -->
+<div class="page" id="page-privacy">
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: March 2026</div>
+
+  <h2>1. Information We Collect</h2>
+  <p>When you subscribe to Meridian Intel, we collect the following information:</p>
+  <ul>
+    <li>Email address</li>
+    <li>Payment information (processed securely by our payment provider)</li>
+    <li>Subscription preferences and sector selections</li>
+    <li>Email engagement data (opens, clicks)</li>
+  </ul>
+
+  <h2>2. How We Use Your Information</h2>
+  <p>We use your information exclusively to:</p>
+  <ul>
+    <li>Deliver your weekly intelligence briefings</li>
+    <li>Process subscription payments</li>
+    <li>Send service-related notifications</li>
+    <li>Improve the quality and relevance of our content</li>
+  </ul>
+
+  <h2>3. We Do Not Sell Your Data</h2>
+  <p>Meridian Intel does not sell, rent, or share your personal information with third parties for marketing purposes. Ever.</p>
+
+  <h2>4. Data Security</h2>
+  <p>We implement industry-standard security measures to protect your personal information. Payment data is processed by our secure payment provider and is never stored on our servers.</p>
+
+  <h2>5. Email Communications</h2>
+  <p>By subscribing, you consent to receive weekly briefings and occasional service updates via email. You may unsubscribe at any time using the unsubscribe link in any email.</p>
+
+  <h2>6. Cookies</h2>
+  <p>Our website uses minimal cookies for basic functionality and analytics. We do not use tracking cookies for advertising purposes.</p>
+
+  <h2>7. Your Rights</h2>
+  <p>You have the right to access, correct, or delete your personal data at any time. To exercise these rights, contact us at hello@meridianintel.space</p>
+
+  <h2>8. Contact</h2>
+  <p>For privacy-related questions: hello@meridianintel.space</p>
+</div>
+
+<!-- REFUNDS -->
+<div class="page" id="page-refunds">
+  <h1>Refund Policy</h1>
+  <div class="updated">Last updated: March 2026</div>
+
+  <h2>Our Commitment</h2>
+  <p>We stand behind the quality of Meridian Intel. If you are not satisfied with your subscription, we want to make it right.</p>
+
+  <h2>7-Day Money Back Guarantee</h2>
+  <p>New subscribers are eligible for a full refund within 7 days of their first payment if they are not satisfied with the Service for any reason. To request a refund within this period, contact us at hello@meridianintel.space with your subscription details.</p>
+
+  <h2>After 7 Days</h2>
+  <p>After the 7-day guarantee period, subscriptions are non-refundable. You may cancel at any time to prevent future charges, and you will continue to receive briefings until the end of your current billing period.</p>
+
+  <h2>Exceptions</h2>
+  <p>Refunds may be issued at our discretion in the following circumstances:</p>
+  <ul>
+    <li>Technical issues preventing delivery of briefings for more than 2 consecutive weeks</li>
+    <li>Duplicate charges due to billing errors</li>
+    <li>Charges made after a confirmed cancellation request</li>
+  </ul>
+
+  <h2>How to Request a Refund</h2>
+  <p>Email us at hello@meridianintel.space with:</p>
+  <ul>
+    <li>Your full name and email address</li>
+    <li>Your subscription plan</li>
+    <li>Reason for refund request</li>
+  </ul>
+  <p>We respond to all refund requests within 48 hours.</p>
+
+  <h2>Cancellations</h2>
+  <p>You may cancel your subscription at any time. Cancellations take effect at the end of the current billing cycle. No partial refunds are issued for unused days in a billing period.</p>
+
+  <h2>Contact</h2>
+  <p>For refund requests: hello@meridianintel.space</p>
+</div>
+
+<footer>
+  <a href="/terms">Terms of Service</a>
+  <a href="/privacy">Privacy Policy</a>
+  <a href="/refunds">Refund Policy</a>
+  <a href="mailto:hello@meridianintel.space">Contact</a>
+</footer>
+
+<script>
+function show(name, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  el.classList.add('active');
+  // Update URL hash
+  window.location.hash = name;
+}
+// Check hash on load
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash === 'privacy') show('privacy', document.querySelectorAll('.tab')[1]);
+  if (hash === 'refunds') show('refunds', document.querySelectorAll('.tab')[2]);
+});
+</script>
+</body>
+</html>
