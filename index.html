@@ -267,7 +267,8 @@ footer { border-top: 1px solid var(--border); padding: 48px 56px; display: flex;
           <li>Signal watchlist — 10 items</li>
           <li>Monthly summary digest</li>
         </ul>
-        <button class="plan-btn plan-btn-ghost" onclick="openPlan('Analyst', '$99/month', 'ANALYST_PLAN_URL')">Start Analyst →</button>
+        <!-- Analyst PayPal Button -->
+      <div id="paypal-button-container-P-8AB96822B45263631NGUY6BA"></div>
       </div>
       <div class="plan featured fade">
         <div class="plan-badge">Most Popular</div>
@@ -282,7 +283,8 @@ footer { border-top: 1px solid var(--border); padding: 48px 56px; display: flex;
           <li>Priority support</li>
           <li>Sector comparison tools</li>
         </ul>
-        <button class="plan-btn plan-btn-primary" onclick="openPlan('Operator', '$249/month', 'OPERATOR_PLAN_URL')">Start Operator →</button>
+        <!-- Operator PayPal Button -->
+        <div id="paypal-button-container-P-22999229DN5312819NGUY63I"></div>
       </div>
       <div class="plan fade">
         <div class="plan-name">Principal</div>
@@ -296,7 +298,8 @@ footer { border-top: 1px solid var(--border); padding: 48px 56px; display: flex;
           <li>Annual sector forecast report</li>
           <li>Founding member pricing locked</li>
         </ul>
-        <button class="plan-btn plan-btn-gold" onclick="openPlan('Principal', '$490/month', 'PRINCIPAL_PLAN_URL')">Start Principal →</button>
+        <!-- Principal PayPal Button -->
+        <div id="paypal-button-container-P-7B640147LF144801WNGUY7QA"></div>
       </div>
     </div>
   </div>
@@ -396,11 +399,49 @@ function closeModal() { document.getElementById('modal').classList.remove('open'
 function handleSignup() {
   const email = document.getElementById('email-input').value.trim();
   if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-  window.open('https://meridian-intel.beehiiv.com/subscribe?email=' + encodeURIComponent(email), '_blank');
+  // Replace YOUR_BEEHIIV_PUBLICATION_ID with your actual Beehiiv publication ID
+  fetch('https://api.beehiiv.com/v2/publications/YOUR_BEEHIIV_PUBLICATION_ID/subscriptions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer YOUR_BEEHIIV_API_KEY' },
+    body: JSON.stringify({ email: email, reactivate_existing: false, send_welcome_email: true })
+  }).catch(() => {});
+  document.getElementById('email-input').value = '';
   const toast = document.getElementById('toast');
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 4000);
 }
+</script>
+<script src="https://www.paypal.com/sdk/js?client-id=ARsTup51yOL7yS0zCj6SaChqHOrgKdcaIC6LmFn5OrpfBg8q0cjDZ6SIvDM-R3ejOvJ-na1QgW_lyYUS&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script>
+paypal.Buttons({
+    style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
+    createSubscription: function(data, actions) {
+      return actions.subscription.create({ plan_id: 'P-8AB96822B45263631NGUY6BA' });
+    },
+    onApprove: function(data, actions) {
+      window.location.href = 'meridianintel.space/#thank-you';
+    }
+}).render('#paypal-button-container-P-8AB96822B45263631NGUY6BA');
+
+paypal.Buttons({
+    style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
+    createSubscription: function(data, actions) {
+      return actions.subscription.create({ plan_id: 'P-22999229DN5312819NGUY63I' });
+    },
+    onApprove: function(data, actions) {
+      window.location.href = 'meridianintel.space/#thank-you';
+    }
+}).render('#paypal-button-container-P-22999229DN5312819NGUY63I');
+
+paypal.Buttons({
+    style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
+    createSubscription: function(data, actions) {
+      return actions.subscription.create({ plan_id: 'P-7B640147LF144801WNGUY7QA' });
+    },
+    onApprove: function(data, actions) {
+      window.location.href = 'meridianintel.space/#thank-you';
+    }
+}).render('#paypal-button-container-P-7B640147LF144801WNGUY7QA');
 </script>
 </body>
 </html>
